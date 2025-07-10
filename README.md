@@ -1,44 +1,52 @@
-# CodeIgniter 4 Application Starter
 
-## What is CodeIgniter?
+# Company Profile Web App - CodeIgniter 4
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Aplikasi web Company Profile berbasis CodeIgniter 4, dirancang untuk menampilkan informasi perusahaan, layanan, portofolio, berita, staff, dan fitur manajemen user secara lengkap dan mudah digunakan.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## Fitur Utama
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+- **Landing Page Dinamis**: Menampilkan informasi perusahaan, layanan, portofolio, dan berita terbaru.
+- **Manajemen Berita**: CRUD berita dengan kategori.
+- **Manajemen Layanan**: CRUD layanan yang ditawarkan perusahaan.
+- **Manajemen Portofolio**: CRUD portofolio proyek/klien.
+- **Manajemen Klien**: CRUD data klien.
+- **Manajemen Staff**: CRUD data staff/karyawan.
+- **Manajemen User**: Registrasi, login, profile, ganti password, dan hak akses.
+- **Halaman Dashboard**: Statistik dan ringkasan data penting.
+- **Autentikasi & Otorisasi**: Sistem login, logout, dan filter akses halaman.
+- **Pengaturan Website**: Update profil perusahaan, kontak, dan sosial media.
+- **404 Custom Page**: Halaman error khusus jika halaman tidak ditemukan.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Struktur Folder Penting
 
-## Installation & updates
+- `app/Controllers/` : Controller utama (Home, Auth, Dashboard, Berita, Client, Portofolio, Staff, User, dll)
+- `app/Models/` : Model untuk akses database (M_berita, M_client, M_portofolio, dll)
+- `app/Views/` : Template tampilan frontend & backend
+- `public/assets/` : Asset gambar, css, js
+- `app/Helpers/` : Helper custom untuk berbagai kebutuhan
+- `app/Config/Routes.php` : Konfigurasi routing aplikasi
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## Instalasi
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+1. **Clone repository ini**
+2. Jalankan `composer install`
+3. Copy file `.env.example` menjadi `.env` dan sesuaikan konfigurasi database, baseURL, dsb.
+4. Jalankan migrasi database jika ada
+5. Pastikan folder `writable/` dapat ditulis (permission 775/777)
+6. Akses aplikasi melalui browser ke alamat yang sesuai (misal: http://localhost/compro-ci4/public)
 
-## Setup
+## Kebutuhan Server
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+- PHP 8.1+
+- Ekstensi PHP: intl, mbstring, json, curl, mysqlnd (jika pakai MySQL)
+- Composer
 
-## Important Change with index.php
+## Kontribusi
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Pull request dan issue sangat terbuka untuk pengembangan lebih lanjut.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
 
-**Please** read the user guide for a better explanation of how CI4 works!
-
+Silakan edit bagian deskripsi, fitur, atau instruksi sesuai kebutuhan spesifik project Anda sebelum mengupload ke GitLab.
 ## Repository Management
 
 We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
