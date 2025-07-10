@@ -38,7 +38,7 @@ class M_kategori extends Model
 
         $this->db->table('tb_kategori_berita')->insert($data);
         $this->session->setFlashdata('success', 'Berhasil Membuat Kategori ' . $name);
-        return redirect()->to('/kategori/kategoriberita');
+        return redirect()->to(base_url('kategori/kategoriberita'));
     }
 
     public function editKategoriBerita($kategori)
@@ -51,7 +51,7 @@ class M_kategori extends Model
             ]);
 
         $this->session->setFlashdata('success', 'Berhasil mengedit data');
-        return redirect()->to('/kategori/kategoriberita');
+        return redirect()->to(base_url('kategori/kategoriberita'));
     }
 
     public function hapusKategoriBerita($kategori)
@@ -61,7 +61,7 @@ class M_kategori extends Model
             ->delete();
 
         $this->session->setFlashdata('success', 'Berhasil menghapus data');
-        return redirect()->to('/kategori/kategoriberita');
+        return redirect()->to(base_url('kategori/kategoriberita'));
     }
 
     // === KATEGORI STAFF ===
@@ -84,7 +84,7 @@ class M_kategori extends Model
 
         $this->db->table('tb_kategori_staff')->insert($data);
         $this->session->setFlashdata('success', 'Berhasil Membuat Kategori ' . $name);
-        return redirect()->to('/kategori/kategoriStaff');
+        return redirect()->to(base_url('kategori/kategoristaff'));
     }
 
     public function editKategoriStaff($kategori)
@@ -97,7 +97,7 @@ class M_kategori extends Model
             ]);
 
         $this->session->setFlashdata('success', 'Berhasil mengedit data');
-        return redirect()->to('/kategori/kategoriStaff');
+        return redirect()->to(base_url('kategori/kategoristaff'));
     }
 
     public function hapusKategoriStaff($kategori)
@@ -107,7 +107,7 @@ class M_kategori extends Model
             ->delete();
 
         $this->session->setFlashdata('success', 'Berhasil menghapus data');
-        return redirect()->to('/kategori/kategoriStaff');
+        return redirect()->to(base_url('kategori/kategoristaff'));
     }
 
     // === KATEGORI CLIENT ===
@@ -130,7 +130,7 @@ class M_kategori extends Model
 
         $this->db->table('tb_kategori_client')->insert($data);
         $this->session->setFlashdata('success', 'Berhasil Membuat Kategori ' . $name);
-        return redirect()->to('/kategori/kategoriclient');
+        return redirect()->to(base_url('kategori/kategoriclient'));
     }
 
     public function editKategoriClient($kategori)
@@ -143,7 +143,7 @@ class M_kategori extends Model
             ]);
 
         $this->session->setFlashdata('success', 'Berhasil mengedit data');
-        return redirect()->to('/kategori/kategoriclient');
+        return redirect()->to(base_url('kategori/kategoriclient'));
     }
 
     public function hapusKategoriClient($kategori)
@@ -153,6 +153,6 @@ class M_kategori extends Model
             ->delete();
 
         $this->session->setFlashdata('success', 'Berhasil menghapus data');
-        return redirect()->to('/kategori/kategoriclient');
+        return redirect()->to(base_url('kategori/kategoriclient'));
     }
 }

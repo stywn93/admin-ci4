@@ -58,7 +58,7 @@
 <div class="modal fade" id="modal-tambah">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="POST" action="<?= base_url('kategori/tambahKategoriberita') ?>" class="needs-validation" novalidate>
+      <form method="POST" action="<?= base_url('kategori/tambahkategoriberita') ?>" class="needs-validation" novalidate>
         <?= csrf_field() ?>
         <div class="modal-header">
           <h5 class="modal-title">Tambah Kategori</h5>

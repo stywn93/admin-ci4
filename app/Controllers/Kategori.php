@@ -16,7 +16,6 @@ class Kategori extends Controller
   public function __construct()
   {
     helper(['form', 'url', 'kategori']); // jika ada helper tambahan
-    is_logged_in();
 
     $this->kategoriModel = new M_kategori();
     $this->settingModel  = new M_Setting();

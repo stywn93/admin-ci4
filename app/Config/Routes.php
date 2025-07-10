@@ -41,8 +41,20 @@ $routes->match(['get', 'post'], 'layanan/tambah', 'Layanan::tambah');
 $routes->match(['get', 'post'], 'layanan/edit/(:num)', 'Layanan::edit/$1');
 $routes->post('layanan/hapus/(:num)', 'Layanan::hapus/$1');
 
+$routes->get('kategori/kategoriberita', 'Kategori::kategoriBerita');
+$routes->match(['get', 'post'], 'kategori/tambahkategoriberita', 'Kategori::tambahKategoriBerita');
+$routes->match(['get', 'post'], 'kategori/editkategoriberita/(:num)', 'Kategori::editKategoriBerita/$1');
+$routes->post('kategori/hapuskategoriberita/(:num)', 'Kategori::hapusKategoriBerita/$1');
 
+$routes->get('kategori/kategoristaff', 'Kategori::kategoriStaff');
+$routes->match(['get', 'post'], 'kategori/tambahkategoristaff', 'Kategori::tambahKategoriStaff');
+$routes->match(['get', 'post'], 'kategori/editkategoristaff/(:num)', 'Kategori::editKategoriStaff/$1');
+$routes->post('kategori/hapuskategoristaff/(:num)', 'Kategori::hapusKategoriStaff/$1');
 
+$routes->get('kategori/kategoriclient', 'Kategori::kategoriClient');
+$routes->match(['get', 'post'], 'kategori/tambahkategoriclient', 'Kategori::tambahKategoriClient');
+$routes->match(['get', 'post'], 'kategori/editkategoriclient/(:num)', 'Kategori::editKategoriClient/$1');
+$routes->post('kategori/hapuskategoriclient/(:num)', 'Kategori::hapusKategoriClient/$1');
 
 $routes->get('blocked', 'Blocked::index');
 $routes->get('auth/logout', 'Auth::logout');
