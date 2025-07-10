@@ -18,7 +18,6 @@ class Client extends Controller
     public function __construct()
     {
         helper(['client', 'form', 'url']);
-        is_logged_in(); // pastikan helper ini tersedia dan cocok untuk CI4
 
         $this->kategoriModel = new M_kategori();
         $this->settingModel  = new M_Setting();
@@ -48,32 +47,35 @@ class Client extends Controller
         return view('back_end/layout/v_wrapper', $data);
     }
 
-    public function tambahclient()
+    public function tambahClient()
     {
         addclient_validation();
+        if ($this->request->getMethod() === 'GET') {
+            if (!$this->validation->withRequest($this->request)->run()) {
+                $setting = $this->settingModel->daftar();
+                $user = db_connect()
+                    ->table('tb_user')
+                    ->where('email', $this->session->get('email'))
+                    ->get()
+                    ->getRowArray();
 
-        if (!$this->validation->withRequest($this->request)->run()) {
-            $setting = $this->settingModel->daftar();
-            $user = db_connect()
-                ->table('tb_user')
-                ->where('email', $this->session->get('email'))
-                ->get()
-                ->getRowArray();
+                $data = [
+                    'title'    => $setting->nama_perusahaan,
+                    'subtitle' => 'Tambah client',
+                    'isi'      => 'back_end/client/v_tambah',
+                    'user'     => $user,
+                    'kategori' => $this->kategoriModel->daftarKategoriclient(),
+                    'image'    => $setting->image,
+                    'validation' => $this->validation,
+                ];
 
-            $data = [
-                'title'    => $setting->nama_perusahaan,
-                'subtitle' => 'Tambah client',
-                'isi'      => 'back_end/client/v_tambah',
-                'user'     => $user,
-                'kategori' => $this->kategoriModel->daftarKategoriclient(),
-                'image'    => $setting->image,
-                'validation' => $this->validation,
-            ];
-
-            return view('back_end/layout/v_wrapper', $data);
+                return view('back_end/layout/v_wrapper', $data);
+            }
+        } elseif ($this->request->getMethod() === 'POST') {
+            if ($this->validation->withRequest($this->request)->run()) {
+                return $this->clientModel->tambah();
+            }
         }
-
-        return $this->clientModel->tambah();
     }
 
     public function edit($id_client)

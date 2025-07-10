@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-warning">Edit Berita</button>
+                  <button type="submit" class="btn btn-warning">Update Berita</button>
                 </div>
               </form>
             </div>

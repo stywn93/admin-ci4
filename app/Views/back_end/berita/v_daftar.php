@@ -42,7 +42,7 @@
                             <div class="bullet"></div>
                             <a href="<?= base_url('berita/edit/' . $value->id_berita) ?>">Edit</a>
                             <div class="bullet"></div>
-                            <a data-toggle="modal" data-target="#hapus<?= $value->id_berita ?>" class="text-danger">Hapus</a>
+                            <a href="#" data-toggle="modal" data-target="#hapus<?= $value->id_berita ?>" class="text-danger">Hapus</a>
                           </div>
                         </td>
                         <td class="text-center"><?= esc($value->nama_kategori) ?></td>

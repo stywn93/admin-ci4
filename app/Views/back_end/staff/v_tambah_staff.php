@@ -16,7 +16,7 @@
       <div class="card">
         <div class="card-header"><h4>Tambah Staff</h4></div>
         <div class="card-body">
-          <form method="POST" action="<?= base_url('staff/tambahStaff') ?>" enctype="multipart/form-data">
+          <form method="POST" action="<?= base_url('staff/tambah') ?>" enctype="multipart/form-data">
             <?= csrf_field() ?>
 
             <div class="row">

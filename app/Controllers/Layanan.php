@@ -16,8 +16,6 @@ class Layanan extends Controller
     public function __construct()
     {
         helper(['form', 'url', 'layanan']);
-        is_logged_in();
-
         $this->layananModel = new M_layanan();
         $this->settingModel = new M_Setting();
         $this->session      = session();
@@ -39,7 +37,7 @@ class Layanan extends Controller
 
         $data = [
             'title'    => $setting->nama_perusahaan,
-            'subtitle'=> 'Daftar layanan',
+            'subtitle' => 'Daftar layanan',
             'isi'     => 'back_end/layanan/v_daftar',
             'user'    => $this->loadUser(),
             'image'   => $setting->image,
@@ -52,23 +50,26 @@ class Layanan extends Controller
     public function tambah()
     {
         tambah_validation();
-
-        if (!$this->validation->withRequest($this->request)->run()) {
+        if ($this->request->getMethod() === 'GET') {
             $setting = $this->settingModel->daftar();
-
             $data = [
                 'title'     => $setting->nama_perusahaan,
                 'subtitle'  => 'Tambah layanan',
                 'isi'       => 'back_end/layanan/v_tambah',
                 'user'      => $this->loadUser(),
                 'image'     => $setting->image,
-                'validation'=> $this->validation
+                'validation' => $this->validation
             ];
-
+            // echo 'im GET';
+            // if ($this->validation->withRequest($this->request)->run()) {
             return view('back_end/layout/v_wrapper', $data);
+            // }
+        } else if ($this->request->getMethod() === 'POST') {
+            if ($this->validation->withRequest($this->request)->run()) {
+                return $this->layananModel->tambah();
+            }
+            return redirect()->to(base_url('layanan'));
         }
-
-        return $this->layananModel->tambah();
     }
 
     public function edit($id_layanan)
@@ -114,7 +115,7 @@ class Layanan extends Controller
             'layanan'   => $layanan,
             'user'      => $user,
             'image'     => $setting->image,
-            'validation'=> $this->validation
+            'validation' => $this->validation
         ];
 
         return view('back_end/layout/v_wrapper', $data);

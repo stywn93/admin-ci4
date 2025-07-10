@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="form-group text-center">
-                  <button type="submit" class="btn btn-primary">Edit Client</button>
+                  <button type="submit" class="btn btn-primary">Update Client</button>
                 </div>
               </form>
             </div>

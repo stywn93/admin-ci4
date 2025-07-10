@@ -22,7 +22,7 @@
               <h4>Tambah Client</h4>
             </div>
             <div class="card-body">
-              <form method="POST" action="<?= base_url('client/tambahclient') ?>" enctype="multipart/form-data">
+              <form method="POST" action="<?= base_url('client/tambah') ?>" enctype="multipart/form-data">
                 <?= csrf_field() ?>
 
                 <div class="row">

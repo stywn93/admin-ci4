@@ -4,11 +4,11 @@ namespace App\Controllers;
 
 use App\Models\M_layanan;
 use App\Models\M_Setting;
-use App\Models\M_portfolio;
+use App\Models\M_portofolio;
 use App\Models\M_client;
 use CodeIgniter\Controller;
 
-class Portfolio extends Controller
+class Portofolio extends Controller
 {
     protected $layananModel;
     protected $settingModel;
@@ -19,12 +19,11 @@ class Portfolio extends Controller
 
     public function __construct()
     {
-        helper(['form', 'url', 'portfolio']);
-        is_logged_in();
+        helper(['form', 'url', 'portofolio']);
 
         $this->layananModel   = new M_layanan();
         $this->settingModel   = new M_Setting();
-        $this->portfolioModel = new M_portfolio();
+        $this->portfolioModel = new M_portofolio();
         $this->clientModel    = new M_client();
         $this->session        = session();
         $this->validation     = \Config\Services::validation();
@@ -46,7 +45,7 @@ class Portfolio extends Controller
         $data = [
             'title'     => $setting->nama_perusahaan,
             'subtitle'  => 'Daftar portfolio',
-            'isi'       => 'back_end/portfolio/v_daftar',
+            'isi'       => 'back_end/portofolio/v_daftar',
             'user'      => $this->getUser(),
             'image'     => $setting->image,
             'portfolio' => $this->portfolioModel->daftar(),
@@ -58,25 +57,28 @@ class Portfolio extends Controller
     public function tambah()
     {
         tambah_validation();
+        if ($this->request->getMethod() === 'GET') {
+            if (!$this->validation->withRequest($this->request)->run()) {
+                $setting = $this->settingModel->daftar();
 
-        if (!$this->validation->withRequest($this->request)->run()) {
-            $setting = $this->settingModel->daftar();
-
-            $data = [
-                'title'     => $setting->nama_perusahaan,
-                'subtitle'  => 'Tambah Portfolio',
-                'isi'       => 'back_end/portfolio/v_tambah',
-                'user'      => $this->getUser(),
-                'image'     => $setting->image,
-                'layanan'   => $this->layananModel->daftar(),
-                'client'    => $this->clientModel->daftar(),
-                'validation'=> $this->validation,
-            ];
-
-            return view('back_end/layout/v_wrapper', $data);
+                $data = [
+                    'title'     => $setting->nama_perusahaan,
+                    'subtitle'  => 'Tambah Portfolio',
+                    'isi'       => 'back_end/portofolio/v_tambah',
+                    'user'      => $this->getUser(),
+                    'image'     => $setting->image,
+                    'layanan'   => $this->layananModel->daftar(),
+                    'client'    => $this->clientModel->daftar(),
+                    'validation' => $this->validation,
+                ];
+                return view('back_end/layout/v_wrapper', $data);
+            }
+        } else if ($this->request->getMethod() === 'POST') {
+            if ($this->validation->withRequest($this->request)->run()) {
+                return $this->portfolioModel->tambah();
+            }
         }
 
-        return $this->portfolioModel->tambah();
     }
 
     public function edit($id_portfolio)
@@ -125,13 +127,13 @@ class Portfolio extends Controller
         $data = [
             'title'     => $setting->nama_perusahaan,
             'subtitle'  => 'Edit portfolio',
-            'isi'       => 'back_end/portfolio/v_edit',
+            'isi'       => 'back_end/portofolio/v_edit',
             'layanan'   => $this->layananModel->daftar(),
             'portfolio' => $portfolio,
             'user'      => $user,
             'client'    => $this->clientModel->daftar(),
             'image'     => $setting->image,
-            'validation'=> $this->validation
+            'validation' => $this->validation
         ];
 
         return view('back_end/layout/v_wrapper', $data);

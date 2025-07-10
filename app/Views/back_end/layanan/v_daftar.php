@@ -38,7 +38,7 @@
                       <div class="bullet"></div>
                       <a href="<?= base_url('layanan/edit/' . $lay->id_layanan) ?>">Edit</a>
                       <div class="bullet"></div>
-                      <a data-toggle="modal" data-target="#hapus<?= $lay->id_layanan ?>" class="text-danger">Hapus</a>
+                      <a href="#" data-toggle="modal" data-target="#hapus<?= $lay->id_layanan ?>" class="text-danger">Hapus</a>
                     </div>
                   </td>
                   <td class="text-center"><?= esc($lay->nama) ?></td>

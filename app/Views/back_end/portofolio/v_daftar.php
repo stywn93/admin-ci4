@@ -40,7 +40,7 @@
                       <div class="bullet"></div>
                       <a href="<?= base_url('portfolio/edit/' . $value->id_portfolio) ?>">Edit</a>
                       <div class="bullet"></div>
-                      <a data-toggle="modal" data-target="#hapus<?= $value->id_portfolio ?>" class="text-danger">Hapus</a>
+                      <a href="#" data-toggle="modal" data-target="#hapus<?= $value->id_portfolio ?>" class="text-danger">Hapus</a>
                     </div>
                   </td>
                   <td class="text-center"><?= esc($value->judul_layanan) ?></td>

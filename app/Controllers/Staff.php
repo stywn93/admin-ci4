@@ -41,7 +41,7 @@ class Staff extends Controller
 
         $data = [
             'title'    => $setting->nama_perusahaan,
-            'subtitle'=> 'Daftar Staff',
+            'subtitle' => 'Daftar Staff',
             'isi'     => 'back_end/staff/v_daftar',
             'user'    => $this->getUser(),
             'staff'   => $this->staffModel->daftar(),
@@ -54,28 +54,30 @@ class Staff extends Controller
     public function tambahStaff()
     {
         addStaff_validation();
+        if ($this->request->getMethod() === 'GET') {
+            if (!$this->validation->withRequest($this->request)->run()) {
+                if ($this->session->get('role_id') != '1') {
+                    return redirect()->to('/blocked');
+                }
 
-        if (!$this->validation->withRequest($this->request)->run()) {
-            if ($this->session->get('role_id') != '1') {
-                return redirect()->to('/blocked');
+                $setting = $this->settingModel->daftar();
+
+                $data = [
+                    'title'    => $setting->nama_perusahaan,
+                    'subtitle' => 'Tambah Staff',
+                    'isi'     => 'back_end/staff/v_tambah_staff',
+                    'user'    => $this->getUser(),
+                    'kategori' => $this->kategoriModel->daftarKategoriStaff(),
+                    'image'   => $setting->image,
+                    'validation' => $this->validation
+                ];
+                return view('back_end/layout/v_wrapper', $data);
             }
-
-            $setting = $this->settingModel->daftar();
-
-            $data = [
-                'title'    => $setting->nama_perusahaan,
-                'subtitle'=> 'Tambah Staff',
-                'isi'     => 'back_end/staff/v_tambah_staff',
-                'user'    => $this->getUser(),
-                'kategori'=> $this->kategoriModel->daftarKategoriStaff(),
-                'image'   => $setting->image,
-                'validation' => $this->validation
-            ];
-
-            return view('back_end/layout/v_wrapper', $data);
+        } else if ($this->request->getMethod() === 'POST') {
+            if ($this->validation->withRequest($this->request)->run()) {
+                return $this->staffModel->tambah();
+            }
         }
-
-        return $this->staffModel->tambah();
     }
 
     public function edit($id_staff)
@@ -90,47 +92,52 @@ class Staff extends Controller
         $staff   = $this->staffModel->detail($id_staff);
         $file    = $this->request->getFile('image');
 
-        if ($this->validation->withRequest($this->request)->run()) {
-            $imageName = $staff->gambar_staff;
-
-            if ($file && $file->isValid() && !$file->hasMoved()) {
-                if (!empty($imageName)) {
-                    @unlink(FCPATH . 'assets/img/staff/' . $imageName);
-                }
-                $imageName = $file->getRandomName();
-                $file->move(FCPATH . 'assets/img/staff/', $imageName);
+        if ($this->request->getMethod() === 'GET') {
+            if (!$this->validation->withRequest($this->request)->run()) {
+                $data = [
+                    'title'    => $setting->nama_perusahaan,
+                    'subtitle' => 'Edit Staff',
+                    'isi'     => 'back_end/staff/v_edit',
+                    'staff'   => $staff,
+                    'user'    => $this->getUser(),
+                    'kategori' => $this->kategoriModel->daftarKategoriStaff(),
+                    'image'   => $setting->image,
+                    'validation' => $this->validation
+                ];
+                return view('back_end/layout/v_wrapper', $data);
             }
-
-            $data = [
-                'id_staff'      => $id_staff,
-                'id_kategori'   => $this->request->getPost('jabatan'),
-                'nama_staff'    => $this->request->getPost('name'),
-                'email_staff'   => $this->request->getPost('email'),
-                'alamat'        => $this->request->getPost('alamat'),
-                'no_telepon'    => $this->request->getPost('no'),
-                'gender'        => $this->request->getPost('gender'),
-                'publish'       => $this->request->getPost('status'),
-                'gambar_staff'  => $imageName,
-                'last_modified' => date('Y-m-d'),
-            ];
-
-            $this->staffModel->edit($data);
-            $this->session->setFlashdata('success', 'Berhasil mengedit data');
-            return redirect()->to('/staff');
         }
+        // If the request method is POST and validation passes
+        if ($this->request->getMethod() === 'POST') {
+            if ($this->validation->withRequest($this->request)->run()) {
+                $imageName = $staff->gambar_staff;
 
-        $data = [
-            'title'    => $setting->nama_perusahaan,
-            'subtitle'=> 'Edit Staff',
-            'isi'     => 'back_end/staff/v_edit',
-            'staff'   => $staff,
-            'user'    => $this->getUser(),
-            'kategori'=> $this->kategoriModel->daftarKategoriStaff(),
-            'image'   => $setting->image,
-            'validation' => $this->validation
-        ];
+                if ($file && $file->isValid() && !$file->hasMoved()) {
+                    if (!empty($imageName)) {
+                        @unlink(FCPATH . 'assets/img/staff/' . $imageName);
+                    }
+                    $imageName = $file->getRandomName();
+                    $file->move(FCPATH . 'assets/img/staff/', $imageName);
+                }
 
-        return view('back_end/layout/v_wrapper', $data);
+                $data = [
+                    'id_staff'      => $id_staff,
+                    'id_kategori'   => $this->request->getPost('jabatan'),
+                    'nama_staff'    => $this->request->getPost('name'),
+                    'email_staff'   => $this->request->getPost('email'),
+                    'alamat'        => $this->request->getPost('alamat'),
+                    'no_telepon'    => $this->request->getPost('no'),
+                    'gender'        => $this->request->getPost('gender'),
+                    'publish'       => $this->request->getPost('status'),
+                    'gambar_staff'  => $imageName,
+                    'last_modified' => date('Y-m-d'),
+                ];
+
+                $this->staffModel->edit($data);
+                $this->session->setFlashdata('success', 'Berhasil mengedit data');
+                return redirect()->to(base_url('staff'));
+            }
+        }
     }
 
     public function detail($id_staff)
@@ -143,11 +150,11 @@ class Staff extends Controller
 
         $data = [
             'title'    => $setting->nama_perusahaan,
-            'subtitle'=> 'Detail Staff',
+            'subtitle' => 'Detail Staff',
             'isi'     => 'back_end/staff/v_detail',
             'staff'   => $this->staffModel->detail($id_staff),
             'user'    => $this->getUser(),
-            'kategori'=> $this->kategoriModel->daftarKategoriStaff(),
+            'kategori' => $this->kategoriModel->daftarKategoriStaff(),
             'image'   => $setting->image,
         ];
 

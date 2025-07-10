@@ -66,7 +66,7 @@
             </div>
 
             <div class="form-group text-center">
-              <button type="submit" class="btn btn-warning">Edit Layanan</button>
+              <button type="submit" class="btn btn-warning">Update Layanan</button>
             </div>
           </form>
         </div>

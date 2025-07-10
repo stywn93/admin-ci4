@@ -44,7 +44,7 @@
                             <div class="bullet"></div>
                             <a href="<?= base_url('client/edit/' . $c->id_client) ?>">Edit</a>
                             <div class="bullet"></div>
-                            <a data-toggle="modal" data-target="#hapus<?= $c->id_client ?>" class="text-danger">Hapus</a>
+                            <a href="#" data-toggle="modal" data-target="#hapus<?= $c->id_client ?>" class="text-danger">Hapus</a>
                           </div>
                         </td>
                         <td class="text-center"><?= esc($c->nama_kategori) ?></td>

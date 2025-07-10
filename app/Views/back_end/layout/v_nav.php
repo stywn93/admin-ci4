@@ -28,7 +28,7 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Staff</span></a>
         <ul class="dropdown-menu">
           <?php if ($user['role_id'] == 1): ?>
-            <li><a class="nav-link beep beep-sidebar" href="<?= base_url('staff/tambahstaff') ?>">Tambah Staff</a></li>
+            <li><a class="nav-link beep beep-sidebar" href="<?= base_url('staff/tambah') ?>">Tambah Staff</a></li>
           <?php endif ?>
           <li><a class="nav-link" href="<?= base_url('staff') ?>">Daftar Staff</a></li>
         </ul>
@@ -38,7 +38,7 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-user-tie"></i> <span>Client</span></a>
         <ul class="dropdown-menu">
           <?php if ($user['role_id'] == 1): ?>
-            <li><a class="nav-link beep beep-sidebar" href="<?= base_url('client/tambahclient') ?>">Tambah Client</a></li>
+            <li><a class="nav-link beep beep-sidebar" href="<?= base_url('client/tambah') ?>">Tambah Client</a></li>
           <?php endif ?>
           <li><a class="nav-link" href="<?= base_url('client') ?>">Daftar Client</a></li>
         </ul>

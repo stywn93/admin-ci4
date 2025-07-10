@@ -103,7 +103,7 @@
             </div>
 
             <div class="form-group text-center">
-              <button type="submit" class="btn btn-primary">Edit Staff</button>
+              <button type="submit" class="btn btn-primary">Update Staff</button>
             </div>
           </form>
         </div>
