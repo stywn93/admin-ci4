@@ -14,8 +14,6 @@ class Settings extends Controller
     public function __construct()
     {
         helper(['form', 'url', 'setting']);
-        is_logged_in();
-
         $this->settingModel = new M_setting();
         $this->session      = session();
         $this->validation   = \Config\Services::validation();
@@ -87,8 +85,8 @@ class Settings extends Controller
             'image'           => $fileName,
         ];
 
-        $this->settingModel->update($data);
+        $this->settingModel->updatenya($data);
         $this->session->setFlashdata('success', 'Berhasil mengupdate data');
-        return redirect()->to('/settings');
+        return redirect()->to(base_url('settings'));
     }
 }

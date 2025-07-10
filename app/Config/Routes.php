@@ -56,14 +56,17 @@ $routes->match(['get', 'post'], 'kategori/tambahkategoriclient', 'Kategori::tamb
 $routes->match(['get', 'post'], 'kategori/editkategoriclient/(:num)', 'Kategori::editKategoriClient/$1');
 $routes->post('kategori/hapuskategoriclient/(:num)', 'Kategori::hapusKategoriClient/$1');
 
+$routes->get('settings', 'Settings::index');
+$routes->post('settings/update', 'Settings::update');
+
+
 $routes->get('blocked', 'Blocked::index');
 $routes->get('auth/logout', 'Auth::logout');
 $routes->match(['get', 'post'], 'client/tambah', 'Client::tambahclient');
 $routes->match(['get', 'post'], 'client/edit/(:num)', 'Client::edit/$1');
 $routes->match(['get', 'post'], 'kategori/edit-kategori-client/(:num)', 'Kategori::editKategoriClient/$1');
 $routes->get('kategori/hapus-kategori-client/(:num)', 'Kategori::hapusKategoriClient/$1');
-$routes->get('settings', 'Settings::index');
-$routes->post('settings/update', 'Settings::update');
+
 // $routes->get('user/profile', 'User::profile');
 
 
