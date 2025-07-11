@@ -1,5 +1,3 @@
-
-
 # Company Profile Web App - CodeIgniter 4
 
 Aplikasi web Company Profile berbasis CodeIgniter 4. Project ini dirancang untuk menampilkan informasi perusahaan, layanan, portofolio, berita, staff, dan fitur manajemen user secara lengkap dan mudah digunakan.
@@ -7,6 +5,17 @@ Aplikasi web Company Profile berbasis CodeIgniter 4. Project ini dirancang untuk
 ## Kredit & Sumber Asli
 
 Project ini merupakan hasil migrasi dan pengembangan dari project CodeIgniter 3 milik [Fajar Adi Setyawan](https://github.com/FajarAdiSetyawan/Company-Profile). Seluruh hak cipta dan kredit untuk versi awal (CI3) tetap milik pemilik aslinya.
+
+## Instalasi
+- `git clone `
+- `composer install`
+- Rename file `env` menjadi `.env`, kemudian lakukan penyesuaian konfigurasi Database di file `.env` tersebut
+- Jalankan syntax `php spark migrate` untuk melakukan migrasi database
+- Jalankan syntax `php spark db:seed DatabaseSeeder` untuk melakukan seeding data awal
+- Jalankan syntax `php spark serve` untuk menjalankan aplikasi
+
+
+
 ## Screenshot
 
 #### Front End (Home)
@@ -51,15 +60,6 @@ Project ini merupakan hasil migrasi dan pengembangan dari project CodeIgniter 3 
 - `public/assets/` : Asset gambar, css, js
 - `app/Helpers/` : Helper custom untuk berbagai kebutuhan
 - `app/Config/Routes.php` : Konfigurasi routing aplikasi
-
-## Instalasi
-
-1. **Clone repository ini**
-2. Jalankan `composer install`
-3. Rename file `env` menjadi `.env` dan sesuaikan konfigurasi database, baseURL, dsb.
-4. Jalankan migrasi database `php spark migrate`
-5. Pastikan folder `writable/` dapat ditulis (permission 775/777)
-6. Jalankan aplikasi dengan `php spark serve` dan akses melalui browser ke alamat yang sesuai (misal: http://localhost:8080/)
 
 ## Kebutuhan Server
 
