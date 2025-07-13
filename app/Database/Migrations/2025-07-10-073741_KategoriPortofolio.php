@@ -25,12 +25,7 @@ class KategoriPortofolio extends Migration
                 'constraint' => 255,
                 'null'       => false,
             ],
-            'date_created' => [
-                'type'    => 'TIMESTAMP',
-                'null'    => false,
-                'default' => 'CURRENT_TIMESTAMP',
-                'on_update' => 'CURRENT_TIMESTAMP',
-            ],
+             'date_created datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_kategori', true);
         $this->forge->createTable('tb_kategori_portfolio');

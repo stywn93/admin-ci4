@@ -55,12 +55,7 @@ class Client extends Migration
                 'constraint' => 20,
                 'null'       => false,
             ],
-            'date_created' => [
-                'type'    => 'TIMESTAMP',
-                'null'    => false,
-                'default' => 'CURRENT_TIMESTAMP',
-                'on_update' => 'CURRENT_TIMESTAMP',
-            ],
+            'date_created datetime default current_timestamp on update current_timestamp',
             'last_modified' => [
                 'type' => 'DATE',
                 'null' => false,

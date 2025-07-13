@@ -52,11 +52,7 @@ class User extends Migration
                 'constraint' => 11,
                 'null'       => false,
             ],
-            'date_created' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'null'       => false,
-            ],
+             'date_created datetime default current_timestamp on update current_timestamp',
         ]);
         $this->forge->addKey('id_user', true);
         $this->forge->createTable('tb_user');

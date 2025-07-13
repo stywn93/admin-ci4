@@ -45,12 +45,7 @@ class Layanan extends Migration
                 'constraint' => 255,
                 'null'       => false,
             ],
-            'date_cretated' => [
-                'type'    => 'TIMESTAMP',
-                'null'    => false,
-                'default' => 'CURRENT_TIMESTAMP',
-                'on_update' => 'CURRENT_TIMESTAMP',
-            ],
+             'date_created datetime default current_timestamp on update current_timestamp',
             'last_modified' => [
                 'type' => 'DATETIME',
                 'null' => false,

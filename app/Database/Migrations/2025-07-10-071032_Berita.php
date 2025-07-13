@@ -58,11 +58,7 @@ class Berita extends Migration
                 'type' => 'TEXT',
                 'null' => false,
             ],
-            'date_cretated' => [
-                'type'    => 'TIMESTAMP',
-                'null'    => false,
-                'default' => 'CURRENT_TIMESTAMP',
-            ],
+             'date_cretated datetime default current_timestamp on update current_timestamp',
             'last_modified' => [
                 'type' => 'DATE',
                 'null' => false,

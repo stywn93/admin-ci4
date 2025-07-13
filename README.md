@@ -11,7 +11,7 @@ Project ini merupakan hasil migrasi dan pengembangan dari project CodeIgniter 3 
 - `composer install`
 - Rename file `env` menjadi `.env`, kemudian lakukan penyesuaian konfigurasi Database di file `.env` tersebut
 - Jalankan syntax `php spark migrate` untuk melakukan migrasi database
-- Jalankan syntax `php spark db:seed DatabaseSeeder` untuk melakukan seeding data awal
+- Jalankan syntax `php spark db:seed AllSeed` untuk melakukan seeding data awal
 - Jalankan syntax `php spark serve` untuk menjalankan aplikasi
 
 
