@@ -28,6 +28,7 @@ class Auth extends Controller
 
     public function index()
     {
+        // echo 'redirect';
         // lakukan verifikasi method yang masuk
         if ($this->request->getMethod() === 'GET') {
             $setting = $this->settingModel->daftar();
@@ -151,7 +152,8 @@ class Auth extends Controller
 
     public function logout()
     {
-        $this->session->remove(['email', 'role_id']);
+        // $this->session->remove(['email', 'role_id']);
+        $this->session->destroy();
         $this->session->setFlashdata('success', 'Anda Berhasil Logout');
         return redirect()->to(base_url('auth'));
     }

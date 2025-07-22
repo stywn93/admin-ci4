@@ -44,7 +44,7 @@
             </div>
             <div class="card-footer text-center">
               <div class="font-weight-bold mb-2">
-                Tanggal Dibuat: <?= date('d F Y', $user['date_created']) ?>
+                Tanggal Dibuat: <?= $user['date_created'] ?>
               </div>
               <a href="#" class="btn btn-social-icon btn-facebook mr-1"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="btn btn-social-icon btn-twitter mr-1"><i class="fab fa-twitter"></i></a>

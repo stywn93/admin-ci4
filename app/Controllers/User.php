@@ -94,9 +94,9 @@ class User extends Controller
 
     public function daftar_user()
     {
-        if ($this->session->get('role_id') != '1') {
-            return redirect()->to('/blocked');
-        }
+        // if ($this->session->get('role_id') != '1') {
+        //     return redirect()->to(base_url('blocked'));
+        // }
 
         $setting = $this->settingModel->daftar();
 

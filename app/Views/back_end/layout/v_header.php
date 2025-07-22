@@ -34,6 +34,7 @@ $pesan = 'Selamat ' . $salam;
           <ul class="navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                
                 <img alt="image" src="<?= base_url('assets/img/profile/' . $user['image']) ?>" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block"><?= esc($pesan) ?>, <?= esc($user['nama']) ?></div>
               </a>

@@ -1,10 +1,6 @@
-# Company Profile Web App - CodeIgniter 4
+# Admin Template - CodeIgniter 4
 
-Aplikasi web Company Profile berbasis CodeIgniter 4. Project ini dirancang untuk menampilkan informasi perusahaan, layanan, portofolio, berita, staff, dan fitur manajemen user secara lengkap dan mudah digunakan.
-
-## Kredit & Sumber Asli
-
-Project ini merupakan hasil migrasi dan pengembangan dari project CodeIgniter 3 milik [Fajar Adi Setyawan](https://github.com/FajarAdiSetyawan/Company-Profile). Seluruh hak cipta dan kredit untuk versi awal (CI3) tetap milik pemilik aslinya.
+Aplikasi Admin Template berbasis CodeIgniter 4. Project ini dirancang template halaman Admin dengan sampel kasus company profile seperti informasi perusahaan, layanan, portofolio, berita, staff, dan fitur manajemen user secara lengkap dan mudah digunakan.
 
 ## Instalasi
 - `git clone `
@@ -18,22 +14,13 @@ Project ini merupakan hasil migrasi dan pengembangan dari project CodeIgniter 3 
 
 ## Screenshot
 
-#### Front End (Home)
-<div align="center">
-    <img src="screenshoot/Company-Profile1.png"</img> 
-</div>
 
-#### Front End (Berita/Artikel)
-<div align="center">
-    <img src="screenshoot/Company-Profile2.png"</img> 
-</div>
-
-#### Back End (Login)
+#### Login
 <div align="center">
     <img src="screenshoot/Company-Profile-›-Login.png"</img> 
 </div>
 
-#### Back End (Dashboard)
+#### Dashboard
 <div align="center">
     <img src="screenshoot/Company-Profile-›-Dashboard.png"</img> 
 </div>

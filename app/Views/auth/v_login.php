@@ -37,7 +37,7 @@ $pesan = 'Selamat ' . $salam;
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <img src="<?= base_url('assets/img/company/' . $image) ?>" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
-            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Company Profile</span></h4>
+            <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Admin Template</span></h4>
             <p class="text-muted">Silakan masuk untuk melanjutkan.</p>
 
             <?php if (session()->getFlashdata('message')) echo session('message'); ?>
@@ -92,8 +92,8 @@ $pesan = 'Selamat ' . $salam;
         <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url() ?>vendor/back-end/assets/img/unsplash/login-bg.jpg">
           <div class="absolute-bottom-left index-2 p-5 text-light">
             <h1 class="display-4 font-weight-bold"><?= $pesan ?></h1>
-            <h5 class="text-muted-transparent">Bali, Indonesia</h5>
-            <small>Photo by <a class="text-light bb" href="https://unsplash.com/photos/a8lTjWJJgLA" target="_blank">Justin Kauffman</a> on <a class="text-light bb" href="https://unsplash.com" target="_blank">Unsplash</a></small>
+            <h5 class="text-muted-transparent">Bromo, Indonesia</h5>
+            <small>Photo by <a class="text-light bb" href="https://unsplash.com/photos/a-truck-driving-down-a-dirt-road-in-the-middle-of-a-field-wgL4IztYMYc" target="_blank">Yusron El-Jihan</a> on <a class="text-light bb" href="https://unsplash.com" target="_blank">Unsplash</a></small>
           </div>
         </div>
       </div>
